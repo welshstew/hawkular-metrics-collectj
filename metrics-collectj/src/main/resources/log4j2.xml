@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <!--<JsonLayout compact="true" eventEol="true"/>-->
+            <PatternLayout pattern="[%d{dd-MM-yy HH:mm:ss.SSS}] [THREAD: %t] [%-5p] [%c.%M()] [%t] [C:%X{CallerID}] [OBJECTID:%X{OBJECTID}][OBJECTID:%X{VERSION}] | %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
