@@ -59,11 +59,11 @@ class MetricsRouteBuilder extends RouteBuilder {
                     .setProperty(Constants.KUBE_NAMESPACE, constant(kubeNamespace))
                     .transform().groovy("resource:classpath:groovy/" + metricsName + "/generateJolokiaRequest.groovy").id(metricsName + "-jolokia-generate")
                     .to("log:org.swinchester.jolokia.req?showAll=true&level=debug")
-                    .to("seda:callJolokia")
+                    .to("direct:callJolokia")
                     .to("log:org.swinchester.jolokia.resp?showAll=true&level=debug")
                     .process(new JolokiaAggregatorResponseToHawkularRequest())
                     .to("log:org.swinchester.hawk.req?showAll=true&level=debug")
-                    .to("seda:callHawkular")
+                    .to("direct:callHawkular")
                     .to("log:org.swinchester.hawk.resp?showAll=true&level=debug")
                     .log("END collecting stats for " + metricsName);
 
@@ -74,10 +74,10 @@ class MetricsRouteBuilder extends RouteBuilder {
                 .to("direct:brokermemory", "direct:brokerstats", "direct:destinationstats")
             .end()
 
-        from("seda:callJolokia")
+        from("direct:callJolokia")
             .process(new JolokiaRequestProcessor())
 
-        from("seda:callHawkular")
+        from("direct:callHawkular")
             .process(new HawkularRequestProcessor())
     }
 }
