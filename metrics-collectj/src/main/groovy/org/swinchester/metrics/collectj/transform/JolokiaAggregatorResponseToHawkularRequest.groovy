@@ -25,9 +25,6 @@ class JolokiaAggregatorResponseToHawkularRequest implements Processor{
         def statsList = []
 
         js.each { listItem ->
-
-            log.debug(listItem)
-
             def ts = new Long(listItem.timestamp)
             def podName = listItem.broker
             //get the attributeList (if it is an attribute list) - may just be one attribute

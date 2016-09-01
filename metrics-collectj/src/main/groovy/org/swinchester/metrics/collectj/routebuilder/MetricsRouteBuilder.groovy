@@ -71,7 +71,8 @@ class MetricsRouteBuilder extends RouteBuilder {
 
         from(camelCronUri)
             .multicast()
-                .to("direct:brokermemory", "direct:brokerstats", "direct:destinationstats")
+                .to("direct:destinationstats")
+//                .to("direct:brokermemory", "direct:brokerstats", "direct:destinationstats")
             .end()
 
         from("direct:callJolokia")
