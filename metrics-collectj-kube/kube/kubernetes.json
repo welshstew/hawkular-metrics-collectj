@@ -15,12 +15,77 @@
     "metadata" : {
       "annotations" : { },
       "labels" : {
-        "app" : "metrics-collectj-kube",
-        "project" : "metrics-collectj-kube",
+        "app" : "metrics-collectj",
+        "project" : "metrics-collectj",
         "version" : "1.0-SNAPSHOT",
         "group" : "metrics"
       },
-      "name" : "metrics-collectj-kube"
+      "name" : "metrics-collectj"
+    },
+    "spec" : {
+      "dockerImageRepository" : "${REGISTRY}/${IS_PULL_NAMESPACE}/metrics-collectj",
+      "tags" : [ {
+        "annotations" : {
+          "tags" : "${IS_TAG}"
+        },
+        "from" : {
+          "kind" : "ImageStreamTag",
+          "name" : "metrics-collectj"
+        },
+        "name" : "${IS_TAG}"
+      } ]
+    }
+  }, {
+    "apiVersion" : "v1",
+    "kind" : "BuildConfig",
+    "metadata" : {
+      "annotations" : { },
+      "labels" : {
+        "app" : "metrics-collectj",
+        "project" : "metrics-collectj",
+        "version" : "1.0.0-SNAPSHOT",
+        "group" : "metrics"
+      },
+      "name" : "metrics-collectj"
+    },
+    "spec" : {
+      "output" : {
+        "to" : {
+          "kind" : "ImageStreamTag",
+          "name" : "metrics-collectj:${IS_TAG}"
+        }
+      },
+      "source" : {
+        "git" : {
+          "uri" : "${GIT_URI}"
+        },
+        "images" : [ ],
+        "secrets" : [ ],
+        "type" : "Git"
+      },
+      "strategy" : {
+        "sourceStrategy" : {
+          "env" : [ {
+            "name" : "JAVA_MAIN_CLASS",
+            "value" : "org.swinchester.metrics.collectj.app.CollectJApplication"
+          }, {
+            "name" : "ARTIFACT_DIR",
+            "value" : "jolokia-aggregator-api/target"
+          }, {
+            "name" : "HAWTAPP_VERSION",
+            "value" : "2.2.0.redhat-079"
+          } ],
+          "from" : {
+            "kind" : "ImageStreamTag",
+            "name" : "fis-java-openshift:1.0",
+            "namespace" : "openshift"
+          }
+        },
+        "type" : "Source"
+      },
+      "triggers" : [ {
+        "type" : "ImageChange"
+      } ]
     }
   }, {
     "apiVersion" : "v1",
@@ -28,30 +93,32 @@
     "metadata" : {
       "annotations" : { },
       "labels" : {
-        "app" : "metrics-collectj-kube",
-        "project" : "metrics-collectj-kube",
+        "app" : "metrics-collectj",
+        "project" : "metrics-collectj",
         "version" : "1.0-SNAPSHOT",
         "group" : "metrics"
       },
-      "name" : "metrics-collectj-kube"
+      "name" : "metrics-collectj"
     },
     "spec" : {
       "replicas" : 1,
       "selector" : {
-        "app" : "metrics-collectj-kube",
-        "project" : "metrics-collectj-kube",
+        "app" : "metrics-collectj",
+        "project" : "metrics-collectj",
         "version" : "1.0-SNAPSHOT",
         "group" : "metrics"
       },
       "strategy" : {
+        "annotations" : { },
+        "labels" : { },
         "type" : "Recreate"
       },
       "template" : {
         "metadata" : {
           "annotations" : { },
           "labels" : {
-            "app" : "metrics-collectj-kube",
-            "project" : "metrics-collectj-kube",
+            "app" : "metrics-collectj",
+            "project" : "metrics-collectj",
             "version" : "1.0-SNAPSHOT",
             "group" : "metrics"
           }
@@ -61,6 +128,9 @@
             "args" : [ ],
             "command" : [ ],
             "env" : [ {
+              "name" : "SPRING_CONFIG_LOCATION",
+              "value" : "file:///etc/config/application.yml"
+            }, {
               "name" : "KUBERNETES_NAMESPACE",
               "valueFrom" : {
                 "fieldRef" : {
@@ -68,25 +138,53 @@
                 }
               }
             } ],
-            "image" : "il3-dev1/metrics-collectj-kube:1.0-SNAPSHOT",
-            "name" : "metrics-collectj-kube",
-            "ports" : [ ],
-            "securityContext" : { },
-            "volumeMounts" : [ ]
+            "image" : "${IS_PULL_NAMESPACE}/metrics-collectj:${IS_TAG}",
+            "imagePullPolicy" : "Always",
+            "name" : "metrics-collectj",
+            "ports" : [ {
+              "containerPort" : 8778,
+              "name" : "jolokia",
+              "protocol" : "TCP"
+            } ],
+            "resources" : {
+              "limits" : {
+                "cpu" : "400m",
+                "memory" : "1024Mi"
+              },
+              "requests" : {
+                "cpu" : "200m",
+                "memory" : "512Mi"
+              }
+            },
+            "volumeMounts" : [ {
+              "mountPath" : "/etc/config",
+              "name" : "metrics-collectj",
+              "readOnly" : true
+            } ]
           } ],
           "imagePullSecrets" : [ ],
           "nodeSelector" : { },
-          "volumes" : [ ]
+          "restartPolicy" : "Always",
+          "volumes" : [ {
+            "configMap" : {
+              "items" : [ ],
+              "name" : "metrics-collectj"
+            },
+            "name" : "metrics-collectj"
+          } ]
         }
       },
       "triggers" : [ {
+        "type" : "ConfigChange"
+      }, {
         "imageChangeParams" : {
           "automatic" : true,
-          "containerNames" : [ "metrics-collectj-kube" ],
+          "containerNames" : [ "metrics-collectj" ],
           "from" : {
-            "name" : "metrics-collectj-kube:latest"
-          },
-          "lastTriggeredImage" : "latest"
+            "kind" : "ImageStreamTag",
+            "name" : "metrics-collectj:${IS_TAG}",
+            "namespace" : "${IS_PULL_NAMESPACE}"
+          }
         },
         "type" : "ImageChange"
       } ]

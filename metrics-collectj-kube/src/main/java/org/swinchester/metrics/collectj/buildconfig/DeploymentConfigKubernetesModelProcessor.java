@@ -16,6 +16,9 @@ public class DeploymentConfigKubernetesModelProcessor {
 
     public void on(DeploymentConfigBuilder builder) {
         builder.withSpec(builder.getSpec())
+                .editMetadata()
+                    .withName(ConfigParameters.APP_NAME)
+                .endMetadata()
                 .editSpec()
                     .withReplicas(1)
 //                    .withSelector(getSelectors())
@@ -109,6 +112,7 @@ public class DeploymentConfigKubernetesModelProcessor {
         container.setPorts(getPorts());
         container.setEnv(getEnvironmentVariables());
         container.setResources(getResourceRequirements());
+        container.setVolumeMounts(getVolumeMounts());
         return container;
     }
 

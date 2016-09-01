@@ -21,11 +21,12 @@
 
         <!-- Core Configs -->
         <fabric8.dockerUser>origin-metrics/</fabric8.dockerUser>
-        <docker.image>${fabric8.dockerUser}${project.artifactId}:${project.version}</docker.image>
+        <docker.image>${fabric8.dockerUser}metrics-collectj:${project.version}</docker.image>
         <fabric8.useDeploymentConfig>true</fabric8.useDeploymentConfig>
 
         <!-- Labels -->
-        <fabric8.label.app>${project.artifactId}</fabric8.label.app>
+        <fabric8.label.app>metrics-collectj</fabric8.label.app>
+        <fabric8.label.project>metrics-collectj</fabric8.label.project>
         <fabric8.label.group>metrics</fabric8.label.group>
         <fabric8.provider/>
 
@@ -36,9 +37,8 @@
         <fabric8.parameter.GIT_URI.value>https://github.com/welshstew/hawkular-metrics-collectj.git</fabric8.parameter.GIT_URI.value>
 
         <!-- Services -->
-        <fabric8.container.name>${project.artifactId}</fabric8.container.name>
+        <fabric8.container.name>metrics-collectj</fabric8.container.name>
         <fabric8.iconRef>java</fabric8.iconRef>
-        <fabric8.container.name>${project.artifactId}</fabric8.container.name>
 
         <!-- maven plugin versions -->
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>

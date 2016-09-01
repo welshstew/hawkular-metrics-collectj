@@ -13,6 +13,9 @@ public class ImageStreamKubernetesModelProcessor {
 
     public void on(ImageStreamBuilder builder) {
         builder.withSpec(builder.getSpec())
+                .editMetadata()
+                    .withName(ConfigParameters.APP_NAME)
+                .endMetadata()
                 .withNewSpec()
                     .withTags(getTags())
                     .withDockerImageRepository("${REGISTRY}/${IS_PULL_NAMESPACE}/" + ConfigParameters.APP_NAME)

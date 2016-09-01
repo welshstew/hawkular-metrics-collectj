@@ -5,7 +5,7 @@ import io.fabric8.openshift.api.model.DeploymentConfigBuilder;
 import io.fabric8.openshift.api.model.ImageStreamBuilder;
 import io.fabric8.openshift.api.model.TemplateBuilder;
 
-//@KubernetesModelProcessor
+@KubernetesModelProcessor
 public class MainKubernetesModelProcessor {
 
     public void withDeploymentConfigBuilderTemplate(DeploymentConfigBuilder builder) {

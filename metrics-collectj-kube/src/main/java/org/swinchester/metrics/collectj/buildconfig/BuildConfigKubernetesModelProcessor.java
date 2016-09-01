@@ -24,16 +24,28 @@ public class BuildConfigKubernetesModelProcessor {
                         .endGit()
                         .withType("Git")
                     .endSource()
-                    .withNewStrategy()
-                        .withNewSourceStrategy()
-                            .withNewFrom()
-                                .withKind("ImageStreamTag")
-                                .withName("fis-java-openshift:1.0")
-                                .withNamespace("openshift")
-                            .endFrom()
-                        .endSourceStrategy()
-                        .withType("Source")
-                    .endStrategy()
+                .withNewStrategy()
+                .withNewSourceStrategy()
+                .addNewEnv()
+                .withName("JAVA_MAIN_CLASS")
+                .withValue("org.swinchester.metrics.collectj.app.CollectJApplication")
+                .endEnv()
+                .addNewEnv()
+                .withName("ARTIFACT_DIR")
+                .withValue("metrics-collectj/target")
+                .endEnv()
+                .addNewEnv()
+                .withName("HAWTAPP_VERSION")
+                .withValue("2.2.0.redhat-079")
+                .endEnv()
+                .withNewFrom()
+                .withKind("ImageStreamTag")
+                .withName("fis-java-openshift:1.0")
+                .withNamespace("openshift")
+                .endFrom()
+                .endSourceStrategy()
+                .withType("Source")
+                .endStrategy()
                     .withNewOutput()
                         .withNewTo()
                             .withKind("ImageStreamTag")
@@ -55,7 +67,7 @@ public class BuildConfigKubernetesModelProcessor {
         Map<String, String> labels = new HashMap<>();
         labels.put("app", ConfigParameters.APP_NAME);
         labels.put("project", ConfigParameters.APP_NAME);
-        labels.put("version", "1.0.0-SNAPSHOT");
+        labels.put("version", "1.0-SNAPSHOT");
         labels.put("group", ConfigParameters.GROUP_NAME);
 
         return labels;
