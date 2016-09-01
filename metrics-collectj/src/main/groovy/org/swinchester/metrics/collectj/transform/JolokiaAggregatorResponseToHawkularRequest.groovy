@@ -4,11 +4,16 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import org.apache.camel.Exchange
 import org.apache.camel.Processor
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * Created by swinchester on 18/08/16.
  */
 class JolokiaAggregatorResponseToHawkularRequest implements Processor{
+
+    Logger log = LoggerFactory.getLogger(this.class)
+
     @Override
     void process(Exchange exchange) throws Exception {
         exchange.in.setBody(generateBody(exchange.in.body))
@@ -20,6 +25,8 @@ class JolokiaAggregatorResponseToHawkularRequest implements Processor{
         def statsList = []
 
         js.each { listItem ->
+
+            log.debug(listItem)
 
             def ts = new Long(listItem.timestamp)
             def podName = listItem.broker
