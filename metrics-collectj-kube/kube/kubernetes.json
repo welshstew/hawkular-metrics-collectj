@@ -93,19 +93,16 @@
     }
   } ],
   "parameters" : [ {
-    "name" : "OPENSHIFT_MASTER_URI",
-    "value" : "https://10.1.2.2"
-  }, {
     "name" : "IS_TAG",
     "value" : "latest"
   }, {
     "name" : "GIT_URI",
-    "value" : "asdsadsa"
+    "value" : "https://github.com/welshstew/hawkular-metrics-collectj.git"
   }, {
     "name" : "REGISTRY",
     "value" : "172.30.233.53:5000"
   }, {
     "name" : "IS_PULL_NAMESPACE",
-    "value" : "build"
+    "value" : "origin-metrics"
   } ]
 }

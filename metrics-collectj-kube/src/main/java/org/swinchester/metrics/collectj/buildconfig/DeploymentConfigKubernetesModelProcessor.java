@@ -26,6 +26,7 @@ public class DeploymentConfigKubernetesModelProcessor {
                         .editSpec()
                             .withContainers(getContainers())
                             .withRestartPolicy("Always")
+                            .withVolumes(getVolumes())
                         .endSpec()
                     .endTemplate()
                     .withTriggers(getTriggers())
@@ -78,13 +79,26 @@ public class DeploymentConfigKubernetesModelProcessor {
         EnvVar namespace = new EnvVar();
         namespace.setName("KUBERNETES_NAMESPACE");
         namespace.setValueFrom(namespaceSource);
+
+        EnvVar config = new EnvVar();
+        config.setName("SPRING_CONFIG_LOCATION");
+        config.setValue("file:///etc/config/application.yml");
+
+        envVars.add(config);
         envVars.add(namespace);
-        envVars.add(new EnvVar("HAWKULAR_TENANT","${HAWKULAR_TENANT}",null));
-        envVars.add(new EnvVar("JOLOKIA_AGGREGATOR_API","${JOLOKIA_AGGREGATOR_API}",null));
-        envVars.add(new EnvVar("HAWKULAR_METRICS_API","${HAWKULAR_METRICS_API}",null));
-        envVars.add(new EnvVar("CAMEL_CRON_URI","${CAMEL_CRON_URI}",null));
-        envVars.add(new EnvVar("KUBERNETES_LABEL","${KUBERNETES_LABEL}",null));
         return envVars;
+    }
+
+    private List<Volume> getVolumes(){
+
+        Volume configMap = new Volume();
+        configMap.setConfigMap(new ConfigMapVolumeSource(null, ConfigParameters.CONFIGMAP_NAME));
+        configMap.setName(ConfigParameters.CONFIGMAP_NAME);
+
+        List<Volume> volList = new ArrayList<>();
+        volList.add(configMap);
+
+        return volList;
     }
 
     private Container getContainers() {
@@ -98,6 +112,11 @@ public class DeploymentConfigKubernetesModelProcessor {
         return container;
     }
 
+    private List<VolumeMount> getVolumeMounts(){
+        ArrayList<VolumeMount> avm = new ArrayList<>();
+        avm.add(new VolumeMount(ConfigParameters.CONFIGMAP_MOUNT,ConfigParameters.CONFIGMAP_NAME,true));
+        return avm;
+    }
 
     private Map<String, String> getSelectors() {
         Map<String, String> selectors = new HashMap<>();

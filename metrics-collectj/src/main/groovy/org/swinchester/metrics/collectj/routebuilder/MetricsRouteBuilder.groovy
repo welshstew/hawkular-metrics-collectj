@@ -6,6 +6,8 @@ import org.apache.camel.builder.RouteBuilder
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.swinchester.metrics.collectj.Constants
+import org.swinchester.metrics.collectj.http.HawkularRequestProcessor
+import org.swinchester.metrics.collectj.http.JolokiaRequestProcessor
 import org.swinchester.metrics.collectj.transform.JolokiaAggregatorResponseToHawkularRequest
 
 /**
@@ -28,6 +30,9 @@ class MetricsRouteBuilder extends RouteBuilder {
 
     @Value('${kube.label}')
     String kubeLabel;
+
+    @Value('${camel.cron.uri}')
+    String camelCronUri
 
     @Override
     void configure() throws Exception {
@@ -53,14 +58,22 @@ class MetricsRouteBuilder extends RouteBuilder {
                     .setProperty(Constants.KUBE_LABEL, constant(kubeLabel))
                     .setProperty(Constants.KUBE_NAMESPACE, constant(kubeNamespace))
                     .transform().groovy("resource:classpath:groovy/" + metricsName + "/generateJolokiaRequest.groovy").id(metricsName + "-jolokia-generate")
-                    .to("direct:callJolokia")
+                    .to("seda:callJolokia")
                     .process(new JolokiaAggregatorResponseToHawkularRequest())
-                    .to("direct:callHawkular")
+                    .to("seda:callHawkular")
                     .log("END collecting stats for " + metricsName);
 
         }
 
-        //TODO: add cron route
+        from(camelCronUri)
+            .multicast()
+                .to("direct:brokermemory", "direct:brokerstats", "direct:destinationstats")
+            .end()
 
+        from("seda:callJolokia")
+            .process(new JolokiaRequestProcessor())
+
+        from("seda:callHawkular")
+            .process(new HawkularRequestProcessor())
     }
 }

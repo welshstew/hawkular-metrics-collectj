@@ -20,7 +20,7 @@
         <docker.maven.plugin.version>0.14.2</docker.maven.plugin.version>
 
         <!-- Core Configs -->
-        <fabric8.dockerUser>il3-dev1/</fabric8.dockerUser>
+        <fabric8.dockerUser>origin-metrics/</fabric8.dockerUser>
         <docker.image>${fabric8.dockerUser}${project.artifactId}:${project.version}</docker.image>
         <fabric8.useDeploymentConfig>true</fabric8.useDeploymentConfig>
 
@@ -31,19 +31,13 @@
 
         <!-- Parameters -->
         <fabric8.parameter.IS_TAG.value>latest</fabric8.parameter.IS_TAG.value>
-        <fabric8.parameter.IS_PULL_NAMESPACE.value>build</fabric8.parameter.IS_PULL_NAMESPACE.value>
+        <fabric8.parameter.IS_PULL_NAMESPACE.value>origin-metrics</fabric8.parameter.IS_PULL_NAMESPACE.value>
         <fabric8.parameter.REGISTRY.value>172.30.233.53:5000</fabric8.parameter.REGISTRY.value>
-        <fabric8.parameter.GIT_URI.value>asdsadsa</fabric8.parameter.GIT_URI.value>
-        <fabric8.parameter.OPENSHIFT_MASTER_URI.value>https://10.1.2.2</fabric8.parameter.OPENSHIFT_MASTER_URI.value>
-
+        <fabric8.parameter.GIT_URI.value>https://github.com/welshstew/hawkular-metrics-collectj.git</fabric8.parameter.GIT_URI.value>
 
         <!-- Services -->
         <fabric8.container.name>${project.artifactId}</fabric8.container.name>
         <fabric8.iconRef>java</fabric8.iconRef>
-
-        <fabric8.service.jolokia-aggregator-svc.port>8080</fabric8.service.jolokia-aggregator-svc.port>
-        <fabric8.service.jolokia-aggregator-svc.containerPort>8080</fabric8.service.jolokia-aggregator-svc.containerPort>
-        <fabric8.service.il3-ldap-service.type>LoadBalancer</fabric8.service.il3-ldap-service.type>
         <fabric8.container.name>${project.artifactId}</fabric8.container.name>
 
         <!-- maven plugin versions -->
