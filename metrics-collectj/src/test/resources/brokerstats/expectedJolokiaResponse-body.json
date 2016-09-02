@@ -1,0 +1,52 @@
+[
+  {
+    "broker": "broker-amq-1-l3v0j",
+    "request": {
+      "attribute": [
+        "CurrentConnectionsCount",
+        "TotalConnectionsCount",
+        "TotalConsumerCount",
+        "TotalDequeueCount",
+        "TotalMessageCount",
+        "TotalProducerCount"
+      ],
+      "mbean": "org.apache.activemq:brokerName=broker-amq-1-l3v0j,type=Broker",
+      "type": "read"
+    },
+    "status": 200,
+    "timestamp": 1472825347,
+    "value": {
+      "CurrentConnectionsCount": 2,
+      "TotalConnectionsCount": 2,
+      "TotalConsumerCount": 0,
+      "TotalDequeueCount": 0,
+      "TotalMessageCount": 0,
+      "TotalProducerCount": 0
+    }
+  },
+  {
+    "broker": "broker-amq-1-rl0fn",
+    "request": {
+      "attribute": [
+        "CurrentConnectionsCount",
+        "TotalConnectionsCount",
+        "TotalConsumerCount",
+        "TotalDequeueCount",
+        "TotalMessageCount",
+        "TotalProducerCount"
+      ],
+      "mbean": "org.apache.activemq:brokerName=broker-amq-1-rl0fn,type=Broker",
+      "type": "read"
+    },
+    "status": 200,
+    "timestamp": 1472825347,
+    "value": {
+      "CurrentConnectionsCount": 2,
+      "TotalConnectionsCount": 2,
+      "TotalConsumerCount": 0,
+      "TotalDequeueCount": 0,
+      "TotalMessageCount": 0,
+      "TotalProducerCount": 0
+    }
+  }
+]

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ImportResource;
  * Created by swinchester on 18/08/16.
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"org.swinchester.metrics.collectj"})
+@ComponentScan(basePackages = {"org.swinchester.metrics.collectj.routebuilder"})
 @ImportResource({"META-INF/spring/camel-context.xml"})
 public class CollectJApplication extends FatJarRouter{
 }

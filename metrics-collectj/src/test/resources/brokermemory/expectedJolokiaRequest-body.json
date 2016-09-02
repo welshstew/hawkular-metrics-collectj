@@ -1,0 +1,5 @@
+{
+  "type":"read",
+  "mbean": "java.lang:type=Memory",
+  "attribute" : ["HeapMemoryUsage", "NonHeapMemoryUsage"]
+}

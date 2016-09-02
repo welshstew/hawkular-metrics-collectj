@@ -4,8 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd">
 
+
+
     <camelContext xmlns="http://camel.apache.org/schema/spring">
         <routeBuilder ref="metricsRouteBuilder" />
+        <routeBuilder ref="timerRouteBuilder" />
     </camelContext>
 
 </beans>

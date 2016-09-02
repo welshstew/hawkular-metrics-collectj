@@ -1,0 +1,40 @@
+[
+  {
+    "broker": "broker-amq-1-l3v0j",
+    "request": {
+      "attribute": [
+        "QueueSize",
+        "ConsumerCount"
+      ],
+      "mbean": "org.apache.activemq:brokerName=broker-amq-1-l3v0j,destinationName=*,destinationType=Queue,type=Broker",
+      "type": "read"
+    },
+    "status": 200,
+    "timestamp": 1472823115,
+    "value": {
+      "org.apache.activemq:brokerName=broker-amq-1-l3v0j,destinationName=queue.one,destinationType=Queue,type=Broker": {
+        "ConsumerCount": 0,
+        "QueueSize": 0
+      }
+    }
+  },
+  {
+    "broker": "broker-amq-1-rl0fn",
+    "request": {
+      "attribute": [
+        "QueueSize",
+        "ConsumerCount"
+      ],
+      "mbean": "org.apache.activemq:brokerName=broker-amq-1-rl0fn,destinationName=*,destinationType=Queue,type=Broker",
+      "type": "read"
+    },
+    "status": 200,
+    "timestamp": 1472823115,
+    "value": {
+      "org.apache.activemq:brokerName=broker-amq-1-rl0fn,destinationName=queue.one,destinationType=Queue,type=Broker": {
+        "ConsumerCount": 0,
+        "QueueSize": 0
+      }
+    }
+  }
+]

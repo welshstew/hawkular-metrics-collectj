@@ -1,0 +1,56 @@
+[
+  {
+    "broker": "broker-amq-1-l3v0j",
+    "request": {
+      "attribute": [
+        "HeapMemoryUsage",
+        "NonHeapMemoryUsage"
+      ],
+      "mbean": "java.lang:type=Memory",
+      "type": "read"
+    },
+    "status": 200,
+    "timestamp": 1472824958,
+    "value": {
+      "HeapMemoryUsage": {
+        "committed": 80216064,
+        "init": 127926272,
+        "max": 1800929280,
+        "used": 34550544
+      },
+      "NonHeapMemoryUsage": {
+        "committed": 52232192,
+        "init": 2555904,
+        "max": -1,
+        "used": 51256904
+      }
+    }
+  },
+  {
+    "broker": "broker-amq-1-rl0fn",
+    "request": {
+      "attribute": [
+        "HeapMemoryUsage",
+        "NonHeapMemoryUsage"
+      ],
+      "mbean": "java.lang:type=Memory",
+      "type": "read"
+    },
+    "status": 200,
+    "timestamp": 1472824958,
+    "value": {
+      "HeapMemoryUsage": {
+        "committed": 119537664,
+        "init": 127926272,
+        "max": 1800929280,
+        "used": 41887496
+      },
+      "NonHeapMemoryUsage": {
+        "committed": 54132736,
+        "init": 2555904,
+        "max": -1,
+        "used": 53058352
+      }
+    }
+  }
+]

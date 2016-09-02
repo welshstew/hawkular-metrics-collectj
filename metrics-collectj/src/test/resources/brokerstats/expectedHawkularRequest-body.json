@@ -1,0 +1,110 @@
+[
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 2
+      }
+    ],
+    "id": "amq.broker-amq-1.CurrentConnectionsCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 2
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalConnectionsCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalConsumerCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalDequeueCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalMessageCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalProducerCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 2
+      }
+    ],
+    "id": "amq.broker-amq-1.CurrentConnectionsCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 2
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalConnectionsCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalConsumerCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalDequeueCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalMessageCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472825347000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.TotalProducerCount"
+  }
+]

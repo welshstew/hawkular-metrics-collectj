@@ -1,0 +1,38 @@
+[
+  {
+    "data": [
+      {
+        "timestamp": 1472823115000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.queue.one.ConsumerCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472823115000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.queue.one.QueueSize"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472823115000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.queue.one.ConsumerCount"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472823115000,
+        "value": 0
+      }
+    ],
+    "id": "amq.broker-amq-1.queue.one.QueueSize"
+  }
+]

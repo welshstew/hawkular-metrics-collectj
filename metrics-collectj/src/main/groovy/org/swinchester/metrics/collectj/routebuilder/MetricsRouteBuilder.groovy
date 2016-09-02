@@ -31,8 +31,7 @@ class MetricsRouteBuilder extends RouteBuilder {
     @Value('${kube.label}')
     String kubeLabel;
 
-    @Value('${camel.cron.uri}')
-    String camelCronUri
+
 
     @Override
     void configure() throws Exception {
@@ -69,11 +68,7 @@ class MetricsRouteBuilder extends RouteBuilder {
 
         }
 
-        from(camelCronUri)
-            .multicast()
-                .to("direct:destinationstats")
-//                .to("direct:brokermemory", "direct:brokerstats", "direct:destinationstats")
-            .end()
+
 
         from("direct:callJolokia")
             .process(new JolokiaRequestProcessor())

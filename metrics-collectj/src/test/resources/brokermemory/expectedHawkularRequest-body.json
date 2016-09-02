@@ -1,0 +1,146 @@
+[
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 80216064
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.committed"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 127926272
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.init"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 1800929280
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.max"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 34550544
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.used"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 52232192
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.committed"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 2555904
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.init"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": -1
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.max"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 51256904
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.used"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 119537664
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.committed"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 127926272
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.init"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 1800929280
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.max"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 41887496
+      }
+    ],
+    "id": "amq.broker-amq-1.HeapMemoryUsage.used"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 54132736
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.committed"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 2555904
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.init"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": -1
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.max"
+  },
+  {
+    "data": [
+      {
+        "timestamp": 1472824958000,
+        "value": 53058352
+      }
+    ],
+    "id": "amq.broker-amq-1.NonHeapMemoryUsage.used"
+  }
+]
